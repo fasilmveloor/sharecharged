@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Station, Booking, ChargerType
+from .models import Station, Booking, ChargerType, Vehicle
 # Register your models here.
 class StationAdmin(admin.ModelAdmin):
     list_display = ('name', 'location', 'charger_type', 'price')
@@ -21,6 +21,14 @@ class ChargerTypeAdmin(admin.ModelAdmin):
     class Meta:
         model = ChargerType
 
+class VehicleAdmin(admin.ModelAdmin):
+    list_display = ('id','name')
+
+    class Meta:
+        model = Vehicle
+
+
 admin.site.register(Station, StationAdmin)
 admin.site.register(Booking, BookingAdmin)
 admin.site.register(ChargerType, ChargerTypeAdmin)
+admin.site.register(Vehicle, VehicleAdmin)

@@ -25,10 +25,7 @@ SECRET_KEY = 'django-insecure-)v5s&-*gpvut-2@=ge+wv*m36mr4^m*jvxy@i=v31b657*exw3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-]
+
 
 # Application definition
 
@@ -60,7 +57,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'sharecharged.urls'
 AUTH_USER_MODEL = 'users.EmailUser'
 AUTHENTICATION_BACKENDS = [
-    'users.auth_backends.EmailBackend',
+    'users.auth_backend.EmailBackend',
     'django.contrib.auth.backends.ModelBackend']
 
 REST_FRAMEWORK = {
@@ -68,7 +65,12 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ],
 }
-
+ALLOWED_HOSTS = ['*']
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

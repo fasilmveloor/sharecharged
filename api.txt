@@ -1,0 +1,49 @@
+POST http://localhost:8000/account/signup/ -register api
+{
+    "email": "",
+    "first_name":"",
+    "last_name":"",
+    "password": "",
+    "password2": "",
+}
+
+POST http://localhost:8000/account/login/ -register api
+{
+    "username":"fasilveloor",
+    "password":"fas6119"
+}
+
+POST http://localhost:8000/account/logout/ -logout api -token
+
+POST http://localhost:8000/stations/ - to create new stations - token required
+{
+    "name": "",
+    "location": "",
+    "address": "",
+    "phone_no": "",
+    "zipcode": "",
+    "domestic": false,
+    "kilowatt": null,
+    "price": null,
+    "charger_type": null
+}
+
+GET http://localhost:8000/stations/location=location will get stations at given location
+
+GET http://localhost:8000/station/1/ - to fetch information about 1st station (1 represent pk value)
+
+POST http://localhost:8000/bookings/ - to create bookings - token required
+{
+    "date": null,
+    "time": null,
+    "duration": null,
+    "price": null,
+    "status": "",
+    "station": null,
+    "user": null,
+    "vehicle": null,
+    "charger_type": null
+}
+GET http://localhost:8000/bookings/
+GET http://localhost:8000/charger_types/ - to fetch all charger types
+GET http://localhost:8000/vehicles/ - to fetch all vehicle types
