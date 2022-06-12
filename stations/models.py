@@ -12,15 +12,15 @@ class ChargerType(models.Model):
 class Station(models.Model):
     id = models.AutoField(primary_key=True, auto_created=True)
     user = models.ForeignKey(EmailUser, on_delete=models.CASCADE, blank=True, null=True)
-    name = models.CharField(max_length=100)
-    location = models.CharField(max_length=100)
-    address = models.TextField(max_length=500)
-    phone_no = models.CharField(max_length=20)
-    zipcode = models.CharField(max_length=10, default='')
-    domestic = models.BooleanField(default=False)
-    kilowatt = models.FloatField(default=0)
-    charger_type = models.ForeignKey(ChargerType, on_delete=models.CASCADE, default=None)
-    price = models.FloatField()
+    name = models.CharField(max_length=100, null=True, blank=True)
+    location = models.CharField(max_length=100, null=True, blank=True)
+    address = models.TextField(max_length=500, null=True, blank=True)
+    phone_no = models.CharField(max_length=20, null=True, blank=True)
+    zipcode = models.CharField(max_length=10, default='', null=True, blank=True)
+    domestic = models.BooleanField(default=False, null=True, blank=True)
+    kilowatt = models.FloatField(default=0, null=True, blank=True)
+    charger_type = models.ForeignKey(ChargerType, on_delete=models.CASCADE, default=None, null=True, blank=True)
+    price = models.FloatField(null=True, blank=True)
     
     def __str__(self):
         return self.name

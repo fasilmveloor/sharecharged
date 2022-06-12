@@ -4,7 +4,20 @@ from stations.models import Station, Booking, ChargerType, Vehicle
 class StationSerializer(serializers.ModelSerializer):
 
     def save(self, **kwargs):
-        return Station.objects.create(user = self.context['request'].user,**kwargs)
+        user = self.context['request'].user
+        name = self.validated_data['name']
+        location = self.validated_data['location']
+        address = self.validated_data['address']
+        phone_no = self.validated_data['phone_no']
+        zipcode = self.validated_data['zipcode']
+        domestic = self.validated_data['domestic']
+        kilowatt = self.validated_data['kilowatt']
+        charger_type = self.validated_data['charger_type']
+        price = self.validated_data['price']
+        station = Station.objects.create(user=user, name=name, location=location, address=address, phone_no=phone_no, zipcode=zipcode, domestic=domestic, kilowatt=kilowatt, charger_type=charger_type, price=price)
+        station.save()
+        return station
+
 
     class Meta:
         model = Station
