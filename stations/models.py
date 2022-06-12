@@ -33,16 +33,16 @@ class Vehicle(models.Model):
         return self.name
 
 class Booking(models.Model):
-    id = models.AutoField(primary_key=True, auto_created=True)
+    id = models.CharField(primary_key=True, max_length=100, auto_created=True)
     station = models.ForeignKey(Station, on_delete=models.CASCADE, default=None)
     user = models.ForeignKey(EmailUser, on_delete=models.CASCADE, default=None)
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE, default=None)
     date = models.DateField()
     time = models.TimeField()
-    duration = models.IntegerField()
+    phone_no = models.CharField(max_length=20, null=True, blank=True)
     charger_type = models.ForeignKey(ChargerType, on_delete=models.CASCADE, default=None)
-    price = models.FloatField()
-    status = models.CharField(max_length=100)
+    
 
-    def __str__(self):
-        return self.user.first_name + ' ' + self.user.last_name 
+    def __str__(self) -> str:
+        print(type(self))
+        return self.id

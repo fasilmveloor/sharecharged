@@ -9,8 +9,8 @@ class StationAdmin(admin.ModelAdmin):
         model = Station
 
 class BookingAdmin(admin.ModelAdmin):
-    list_display = ('station', 'user', 'date', 'time', 'duration', 'price', 'status')
-    search_fields = ('station', 'user', 'date', 'time', 'duration', 'price', 'status')
+    list_display = ('station', 'user', 'date', 'time')
+    search_fields = ('station', 'user', 'date', 'time')
 
     class Meta:
         model = Booking

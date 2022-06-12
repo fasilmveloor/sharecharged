@@ -26,16 +26,14 @@ class StationSerializer(serializers.ModelSerializer):
 class BookingSerializer(serializers.ModelSerializer):
 
     def save(self, **kwargs):
-        station = Station.objects.get(id=self.validated_data['station'])
+        id = self.validated_data['id']
+        station = self.validated_data['station']
         user = self.context['request'].user
-        duration = self.validated_data['duration']
-        price = station.price * duration
-        charger_Type = ChargerType.objects.get(id=self.validated_data['charger_type'])
-        vehicle = Vehicle.objects.get(id=self.validated_data['vehicle'])
+        charger_Type = self.validated_data['charger_type']
+        vehicle = id=self.validated_data['vehicle']
         date = self.validated_data['date']
         time = self.validated_data['time']
-        status = self.validated_data['status']
-        booking = Booking.objects.create(station=station, user=user, duration=duration, price=price, charger_type=charger_Type, vehicle=vehicle, date=date, time=time, status=status)
+        booking = Booking.objects.create(id = id,station=station, user=user, charger_type=charger_Type, vehicle=vehicle, date=date, time=time)
         booking.save()
         return booking
 
