@@ -33,6 +33,7 @@ class Vehicle(models.Model):
         return self.name
 
 class Booking(models.Model):
+    
     id = models.CharField(primary_key=True, max_length=100, auto_created=True)
     station = models.ForeignKey(Station, on_delete=models.CASCADE, default=None)
     user = models.ForeignKey(EmailUser, on_delete=models.CASCADE, default=None)

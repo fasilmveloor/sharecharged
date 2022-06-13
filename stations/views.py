@@ -29,6 +29,15 @@ class BookingListView(ListCreateAPIView):
         queryset = self.get_queryset().filter(station = Station.objects.get(user = request.user))
         serializer = BookingSerializer(queryset, many=True)
         return Response(serializer.data)
+        
+class BookingListViewTest(ListCreateAPIView):
+    queryset = Booking.objects.all()
+    serializer_class = BookingSerializer
+
+    def list(self, request):
+        queryset = self.get_queryset().filter(user = request.user)
+        serializer = BookingSerializer(queryset, many=True)
+        return Response(serializer.data)
 
     
 
